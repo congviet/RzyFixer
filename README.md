@@ -1,2 +1,11 @@
-# RzyFixer
-A .NET Unpacker tool, with many features. Using dnlib assembly &amp; cui for the design.
+RzyFixer
+========
+Credits
+--------
+* Me for the code
+* Developer of Dnlib
+* XSilent for CUI (Console design).
+
+
+
+
