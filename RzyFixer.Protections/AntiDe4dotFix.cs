@@ -20,8 +20,7 @@ namespace RzyFixer.Protections
                 {
                     for (int j = 0; j < type.Interfaces.Count; j++)
                     {
-                        bool h1 = type.Interfaces[j].Interface != null;
-                        if (h1)
+                        if (type.Interfaces[j].Interface != null)
                         {
                             if (type.Interfaces[j].Interface.Name.Contains(type.Name) ||
                             type.Name.Contains(type.Interfaces[j].Interface.Name))
