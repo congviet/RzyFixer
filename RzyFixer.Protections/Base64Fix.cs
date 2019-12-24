@@ -17,10 +17,8 @@ namespace RzyFixer.Protections
             foreach (var type in module.GetTypes())
                 foreach (var method in type.Methods)
                 {
-                    var instructions = method.Body.Instructions;
-                    for (int i = 2; i < instructions.Count; i++)
+                    for (int i = 2; i < method.Body.Instructions.Count; i++)
                     {
-
                         if (method.Body.Instructions[i].OpCode == OpCodes.Call && method.Body.Instructions[i].Operand.ToString().Contains("get_UTF8") && method.Body.Instructions[i + 1].OpCode == OpCodes.Ldstr && method.Body.Instructions[i + 2].Operand.ToString().Contains("FromBase64String"))
                         {
                             var valuebase64 = System.Convert.FromBase64String(method.Body.Instructions[i + 1].Operand.ToString());

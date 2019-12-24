@@ -15,15 +15,14 @@ namespace RzyFixer.Protections
         {
             for (int i = 0; i < module.Types.Count; i++)
             {
-                TypeDef type = module.Types[i];
-                if (type.HasInterfaces)
+                if (module.Types[i].HasInterfaces)
                 {
-                    for (int j = 0; j < type.Interfaces.Count; j++)
+                    for (int j = 0; j < module.Types[i].Interfaces.Count; j++)
                     {
-                        if (type.Interfaces[j].Interface != null)
+                        if (module.Types[i].Interfaces[j].Interface != null)
                         {
-                            if (type.Interfaces[j].Interface.Name.Contains(type.Name) ||
-                            type.Name.Contains(type.Interfaces[j].Interface.Name))
+                            if (module.Types[i].Interfaces[j].Interface.Name.Contains(module.Types[i].Name) ||
+                            module.Types[i].Name.Contains(module.Types[i].Interfaces[j].Interface.Name))
                             {
                                 module.Types.RemoveAt(i);
                                 Logger.Write($"Fixing Anti De4dot", Logger.Type.Info);
