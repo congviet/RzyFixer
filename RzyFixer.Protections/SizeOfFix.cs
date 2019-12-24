@@ -1,4 +1,4 @@
-﻿using dnlib.DotNet;
+using dnlib.DotNet;
 using dnlib.DotNet.Emit;
 using RzyFixer.Core;
 using System;
@@ -25,8 +25,8 @@ namespace RzyFixer.Protections
                         {
                             if (method.Body.Instructions[i].OpCode == OpCodes.Sizeof)
                             {
-                                string key;
-                                switch (key = (method.Body.Instructions[i].Operand as ITypeDefOrRef).ToString())
+                               
+                                switch (method.Body.Instructions[i].Operand.ToString())
                                 {
                                     case "System.Boolean":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_1;
