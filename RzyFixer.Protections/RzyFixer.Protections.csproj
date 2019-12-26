@@ -48,6 +48,7 @@
     <Compile Include="Base64Fix.cs" />
     <Compile Include="CalliFix.cs" />
     <Compile Include="DoubleParseFix.cs" />
+    <Compile Include="EmptyTypeFix.cs" />
     <Compile Include="MathsFix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtectionExample.cs" />

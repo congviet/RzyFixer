@@ -25,7 +25,7 @@ namespace RzyFixer.Protections
                             module.Types[i].Name.Contains(module.Types[i].Interfaces[j].Interface.Name))
                             {
                                 module.Types.RemoveAt(i);
-                                Logger.Write($"Fixing Anti De4dot", Logger.Type.Info);
+                                Logger.Write($"Fixing Anti De4dot in type {module.Types[i].Name}", Logger.Type.Info);
                             }
                         }
                     }

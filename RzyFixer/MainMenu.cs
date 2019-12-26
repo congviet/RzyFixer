@@ -29,15 +29,15 @@ namespace RzyFixer
             Controls.Add(new Button("Anti De4dot Fixer", sender =>
             {
                 Console.Clear();
-                try { RzyFixer.Protections.AntiDe4dotFix.Execute(module); }
-                catch (Exception e) { Logger.Write($"Error while trying to remove Anti De4dot Protection." + e, Logger.Type.Error); }
-                SaveFile();
+                RzyFixer.Protections.AntiDe4dotFix.Execute(module);
+                FileSaver.SaveFile(directory, module);
             }));
             Controls.Add(new Button("Base64 Encoding Fixer", sender =>
             {
                 Console.Clear();
                 try { RzyFixer.Protections.Base64Fix.Execute(module); }
                 catch (Exception e) { Logger.Write($"Error while trying to remove Base64 Encoding Protection." + e, Logger.Type.Error); }
+                FileSaver.SaveFile(directory, module);
             }));
             Controls.Add(new Button("Call to Calli Fixer", sender =>
             {
@@ -50,51 +50,32 @@ namespace RzyFixer
                 Console.Clear();
                 try { RzyFixer.Protections.DoubleParseFix.Execute(module); }
                 catch (Exception e) { Logger.Write($"Error while trying to remove Double Parse Protection." + e, Logger.Type.Error); }
-                SaveFile();
+                FileSaver.SaveFile(directory, module);
             }));
             Controls.Add(new Button("Maths Equation Fixer", sender =>
             {
                 Console.Clear();
                 try { RzyFixer.Protections.MathsFix.Execute(module); }
                 catch (Exception e) { Logger.Write($"Error while trying to remove Maths Equations Protection." + e, Logger.Type.Error); }
+                FileSaver.SaveFile(directory, module);
             }));
             Controls.Add(new Button("SizeOf Fixer", sender =>
             {
                 Console.Clear();
                 try { RzyFixer.Protections.MathsFix.Execute(module); }
                 catch (Exception e) { Logger.Write($"Error while trying to remove SizeOf Protection." + e, Logger.Type.Error); }
+                FileSaver.SaveFile(directory, module);
+            }));
+            Controls.Add(new Button("EmptyTypes Fixer", sender =>
+            {
+                Console.Clear();
+                try { RzyFixer.Protections.EmptyTypeFix.Execute(module); }
+                catch (Exception e) { Logger.Write($"Error while trying to remove EmptyTypes Protection." + e, Logger.Type.Error); }
+                FileSaver.SaveFile(directory, module);
             }));
 
             Controls.Add(new Label("TIPS: Choose the protection to remove by using the arrow on your keyboard. When selected press enter."));
             Controls.Add(new Label($"Assembly: {directory}"));
-
-
-        }
-
-
-
-        
-
-        public static void SaveFile()
-        {
-
-            string text = Path.GetDirectoryName(directory);
-            if (!text.EndsWith("\\"))
-            {
-                text += "\\";
-            }
-            string filename = string.Format("{0}{1}-Desintegrated{2}", text, Path.GetFileNameWithoutExtension(directory), Path.GetExtension(directory));
-            ModuleWriterOptions writerOptions = new ModuleWriterOptions(module);
-            writerOptions.MetadataOptions.Flags |= MetadataFlags.PreserveAll;
-            writerOptions.Logger = DummyLogger.NoThrowInstance;
-            NativeModuleWriterOptions NativewriterOptions = new NativeModuleWriterOptions(module, true);
-            NativewriterOptions.MetadataOptions.Flags |= MetadataFlags.PreserveAll;
-            NativewriterOptions.Logger = DummyLogger.NoThrowInstance;
-            if (module.IsILOnly) { module.Write(filename, writerOptions); } else { module.NativeWrite(filename, NativewriterOptions); }
-
-            Logger.Write($"File saved at: {filename}", Logger.Type.Done);
-            Console.ReadKey();
-            Environment.Exit(0);
         }
     }
 }

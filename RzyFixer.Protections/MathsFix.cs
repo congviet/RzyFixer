@@ -31,7 +31,7 @@ namespace RzyFixer.Protections
                                     method.Body.Instructions[i].Operand = num;
                                     method.Body.Instructions[i - 2].OpCode = OpCodes.Nop;
                                     method.Body.Instructions[i - 1].OpCode = OpCodes.Nop;
-                                    Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                    Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
 
                                 }
                             }
@@ -42,7 +42,7 @@ namespace RzyFixer.Protections
                                 method.Body.Instructions[i].Operand = num3;
                                 method.Body.Instructions[i - 2].OpCode = OpCodes.Nop;
                                 method.Body.Instructions[i - 1].OpCode = OpCodes.Nop;
-                                Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                             }
                             else if (method.Body.Instructions[i].OpCode == OpCodes.Mul)
                             {
@@ -53,7 +53,7 @@ namespace RzyFixer.Protections
                                     method.Body.Instructions[i].Operand = num2;
                                     method.Body.Instructions[i - 2].OpCode = OpCodes.Nop;
                                     method.Body.Instructions[i - 1].OpCode = OpCodes.Nop;
-                                    Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                    Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                 }
                             }
                         }

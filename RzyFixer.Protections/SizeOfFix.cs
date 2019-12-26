@@ -30,40 +30,40 @@ namespace RzyFixer.Protections
                                 {
                                     case "System.Boolean":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_1;
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.Byte":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_1;
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.Decimal":
                                         method.Body.Instructions[i] = OpCodes.Ldc_I4.ToInstruction(16);
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.Double":
                                     case "System.Int64":
                                     case "System.UInt64":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_8;
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.Guid":
                                         method.Body.Instructions[i] = OpCodes.Ldc_I4.ToInstruction(16);
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.Int16":
                                     case "System.UInt16":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_2;
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.Int32":
                                     case "System.Single":
                                     case "System.UInt32":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_4;
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                     case "System.SByte":
                                         method.Body.Instructions[i].OpCode = OpCodes.Ldc_I4_1;
-                                        Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                                        Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                                         break;
                                 }
                                

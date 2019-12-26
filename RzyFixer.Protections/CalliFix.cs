@@ -18,7 +18,7 @@ namespace RzyFixer.Protections
                     {
                         if (method.Body.Instructions[i].OpCode.Code == Code.Ldftn && method.Body.Instructions[i + 1].OpCode.Code == Code.Calli)
                         {
-                            Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
+                            Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
                             method.Body.Instructions[i].OpCode = OpCodes.Call;
                             method.Body.Instructions[i + 1].OpCode = OpCodes.Nop;
                         }

@@ -21,8 +21,8 @@ namespace RzyFixer.Protections
 
                             if (method.Body.Instructions[i].OpCode == OpCodes.Call && method.Body.Instructions[i].Operand.ToString().Contains("Parse") && method.Body.Instructions[i + 1].OpCode == OpCodes.Conv_I4 && method.Body.Instructions[i - 1].OpCode == OpCodes.Ldstr)
                             {
-                                Logger.Write($"Fixing {Name} at the offset: {method.Body.Instructions[i].GetOffset().ToString()}", Logger.Type.Info);
-                                string valueToPut = method.Body.Instructions[i - 1].Operand.ToString();
+                            Logger.Write($"Fixing {Name} in the method: {method.Name} at the line: {i}", Logger.Type.Info);
+                            string valueToPut = method.Body.Instructions[i - 1].Operand.ToString();
                                 string secondvalue = method.Body.Instructions[i - 2].Operand.ToString();
                                 method.Body.Instructions[i].OpCode = OpCodes.Nop;
                                 method.Body.Instructions[i - 2].OpCode = OpCodes.Ldc_I4;
